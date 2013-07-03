@@ -218,7 +218,7 @@ public class ShowSig extends Shell {
 
 //		for (int i2 = 0; i2 < (Math.ceil((double)len2/(stepSize*2))) ; i2++) {
 		// shows only 10 rows
-		for (int i2 = 0; i2 < 10 ; i2++) {
+		for (int i2 = 0; i2 < 6 ; i2++) {
 	        TableItem item = new TableItem(table_1, SWT.NONE);
 	        
 	        // column 1
