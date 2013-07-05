@@ -21,7 +21,6 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Label;
 
-
 public class ShowSig extends Shell {
 	private Label txtT;
 	private Label txtT_2;
@@ -159,7 +158,7 @@ public class ShowSig extends Shell {
 	    for (int i1 = 0; i1 < (Math.ceil((double)len1/(stepSize*2))) ; i1++) {
 	        TableItem item = new TableItem(table, SWT.NONE);
 	        
-	        // column 1 - adress
+	        // column 1 - address
 	        item.setText(0, getAddress(i1, stepSize));
 	        
 	        // column 2 - hex
@@ -181,7 +180,6 @@ public class ShowSig extends Shell {
 	        item.setText(2, bufferS2.toString());
 	      }
 	    
-
 		// create table to show signed message
 		table_1 = new Table(composite, SWT.BORDER | SWT.FULL_SELECTION);
 		table_1.setLinesVisible(true);
@@ -235,6 +233,7 @@ public class ShowSig extends Shell {
 
 	      }
 	    
+		
 	    // text field to show signature as hex, octal or decimal
 		txtSigNum = new Label(composite, SWT.BORDER | SWT.WRAP);
 		txtSigNum.setBounds(0, 98, 484, 151);
@@ -307,6 +306,7 @@ public class ShowSig extends Shell {
 		btnOpen.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// TODO
 				//Call the helper function to format the output (this is madness?!)
 				//saveToFile();
 				openHexEditor();
@@ -348,7 +348,7 @@ public class ShowSig extends Shell {
 	 * Returns a string to get the address in the hex-dump-table.
 	 * 
 	 * @param i Row of table
-	 * @param stepSize Differnce between digits in the row.
+	 * @param stepSize Difference between digits in the row.
 	 * @return a string containing the address in the table
 	 */
 	protected String getAddress(int i, int stepSize){
@@ -356,7 +356,7 @@ public class ShowSig extends Shell {
 		}
 	
 	/**
-	 * Retruns the ascii representation of an hexadecimal string.
+	 * Returns the ascii representation of an hexadecimal string.
 	 * 
 	 * @param hex
 	 * @return a string containing the ascii representation
@@ -431,5 +431,7 @@ public class ShowSig extends Shell {
 	
 	private void openHexEditor() {
 		//TODO
+		String str = org.jcryptool.visual.sig.algorithm.Input.signatureHex;
+		
 	}
 }
