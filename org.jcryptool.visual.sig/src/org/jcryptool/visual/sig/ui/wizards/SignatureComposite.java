@@ -194,7 +194,7 @@ public class SignatureComposite extends Composite implements SelectionListener{
 			combo.setVisible(false);
 			lblSelectAKey.setVisible(false);
 			//Move the description box up
-			grpDescription.setBounds(10,181,300,255);
+			grpDescription.setBounds(10,181,406,255);
 			//Enable the finish button
 			page.setPageComplete(true);
 		} else {
