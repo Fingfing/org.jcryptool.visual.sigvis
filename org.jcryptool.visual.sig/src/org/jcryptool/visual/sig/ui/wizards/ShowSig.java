@@ -1,13 +1,20 @@
 package org.jcryptool.visual.sig.ui.wizards;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Composite;
@@ -20,6 +27,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Label;
+import org.jcryptool.core.logging.utils.LogUtil;
 
 public class ShowSig extends Shell {
 	private Label txtT;
@@ -318,7 +326,6 @@ public class ShowSig extends Shell {
 		btnOpen.setBounds(199, 636, 140, 25);
 		btnOpen.setText(Messages.ShowSig_btnOpen);
 		
-		
 		Label lblTextopeneditor = new Label(composite, SWT.WRAP | SWT.CENTER);
 		lblTextopeneditor.setAlignment(SWT.LEFT);
 		lblTextopeneditor.setBounds(2, 584, 475, 32);
@@ -328,6 +335,44 @@ public class ShowSig extends Shell {
 		lblNewLabel = new Label(composite, SWT.NONE);
 		lblNewLabel.setBounds(0, 578, 484, 44);
 		lblNewLabel.setBackground(new Color(Display.getCurrent(), 255, 255, 255));
+		
+		Button btnSave = new Button(composite, SWT.NONE);
+		btnSave.setBounds(101, 634, 94, 28);
+		btnSave.setText(Messages.ShowSig_btnSave);
+		btnSave.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				//Open File save dialog
+				FileDialog dialog = new FileDialog(Display.getCurrent().getActiveShell(), SWT.SAVE);
+			    dialog.setFileName("signature_and_message");
+			    String savePath = dialog.open();
+				//Write the file
+			    if (savePath != null) {
+					try {
+					      OutputStream output = null;
+					      try {
+					        output = new BufferedOutputStream(new FileOutputStream(savePath));
+					        output.write(sLen);
+					        output.write(org.jcryptool.visual.sig.algorithm.Input.signature);
+					        output.write(org.jcryptool.visual.sig.algorithm.Input.data.toString().getBytes());
+					      }//end try
+					      finally {
+					          output.close();
+					        }//end finally
+					    }//end try
+					    catch(FileNotFoundException ex){
+					    	//LogUtil.logError(SigPlugin.PLUGIN_ID, ex);
+					    }//end catch
+					    catch(IOException ex){
+					    	//LogUtil.logError(SigPlugin.PLUGIN_ID, ex);
+					    }//end catch
+					MessageBox messageBox = new MessageBox(new Shell(Display.getCurrent()), SWT.ICON_INFORMATION | SWT.OK);
+	                messageBox.setText(Messages.ShowSig_MessageBoxTitle); 
+	                messageBox.setMessage(Messages.ShowSig_MessageBoxText);
+	                messageBox.open();
+			    }//end if
+			}//end widgetSelected
+		});
 		
 		createContents();	
 	}

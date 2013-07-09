@@ -99,6 +99,10 @@ public class Messages {
 	public static String ShowSig_tblHex;
 	public static String ShowSig_tblAscii;
 	
+	public static String ShowSig_MessageBoxTitle;
+	public static String ShowSig_MessageBoxText;
+	public static String ShowSig_btnSave;
+	
 	public static String ShowSig_editorDescripton;
 	static {
 		// initialize resource bundle
