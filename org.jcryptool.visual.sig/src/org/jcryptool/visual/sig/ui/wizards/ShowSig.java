@@ -301,7 +301,7 @@ public class ShowSig extends Shell {
 				ShowSig.this.close();
 			}
 		});
-		btnNewButton.setBounds(345, 636, 140, 25);
+		btnNewButton.setBounds(389, 633, 95, 28);
 		btnNewButton.setText(Messages.ShowSig_btnClose);
 		
 		// open hex editor
@@ -316,7 +316,7 @@ public class ShowSig extends Shell {
 				openHexEditor();
 			}
 		});
-		btnOpen.setBounds(199, 636, 140, 25);
+		btnOpen.setBounds(145, 635, 140, 25);
 		btnOpen.setText(Messages.ShowSig_btnOpen);
 		
 		Label lblTextopeneditor = new Label(composite, SWT.WRAP | SWT.CENTER);
@@ -330,7 +330,7 @@ public class ShowSig extends Shell {
 		lblNewLabel.setBackground(new Color(Display.getCurrent(), 255, 255, 255));
 		
 		Button btnSave = new Button(composite, SWT.NONE);
-		btnSave.setBounds(101, 634, 94, 28);
+		btnSave.setBounds(289, 633, 95, 28);
 		btnSave.setText(Messages.ShowSig_btnSave);
 		btnSave.addSelectionListener(new SelectionAdapter() {
 			@Override
