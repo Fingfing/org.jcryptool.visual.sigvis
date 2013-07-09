@@ -43,11 +43,14 @@ public class ShowSig extends Shell {
 	private Label txtSigNum;
 
 	private int sigLen = org.jcryptool.visual.sig.algorithm.Input.signature.length;
-	private String sigStrLen = Integer.toString(sigLen);
+	private String sigStrLen = Integer.toString(sigLen); //Bytes!!!!
 	private int mesLen = org.jcryptool.visual.sig.algorithm.Input.data.length;
-	private String mesStrLen = Integer.toString(mesLen);
+	private String mesStrLen = Integer.toString(mesLen); //Bytes!!!!
 	private Label lblNewLabel;
 	private String userName;
+	
+	private int sLen = sigLen * 8;
+	private int mLen = mesLen * 8;
 	
 	
 	/**
@@ -112,7 +115,7 @@ public class ShowSig extends Shell {
 		txtSig.setBounds(0, 77, 137, 21);
 		
 		txtLnge = new Label(composite, SWT.READ_ONLY);
-		txtLnge.setText(Messages.ShowSig_lengthSig + sigStrLen + " Bits");
+		txtLnge.setText(Messages.ShowSig_lengthSig + sLen + " Bits");
 		txtLnge.setBounds(0, 253, 430, 21);
 		
 		Group grpOption = new Group(composite, SWT.NONE);
@@ -125,7 +128,7 @@ public class ShowSig extends Shell {
 		txtSignedMes.setBounds(0, 373, 137, 21);
 		
 		txtLngeMes = new Label(composite, SWT.READ_ONLY);
-		txtLngeMes.setText(Messages.ShowSig_lengthMessage + mesStrLen + " Bits");
+		txtLngeMes.setText(Messages.ShowSig_lengthMessage + mLen + " Bits");
 		txtLngeMes.setBounds(0, 548, 430, 21);
 		
 
