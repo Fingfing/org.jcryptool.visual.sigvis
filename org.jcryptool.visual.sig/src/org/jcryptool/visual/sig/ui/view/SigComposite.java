@@ -1,5 +1,9 @@
 package org.jcryptool.visual.sig.ui.view;
 
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
@@ -22,6 +26,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
@@ -29,25 +35,17 @@ import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.Perspective;
 import org.eclipse.ui.internal.Workbench;
 import org.jcryptool.core.logging.utils.LogUtil;
-import org.jcryptool.visual.sig.SigPlugin;
+import org.jcryptool.crypto.keystore.backend.KeyStoreAlias;
 import org.jcryptool.visual.sig.Messages;
+import org.jcryptool.visual.sig.SigPlugin;
 import org.jcryptool.visual.sig.algorithm.Input;
 import org.jcryptool.visual.sig.ui.wizards.HashWizard;
 import org.jcryptool.visual.sig.ui.wizards.InputWizard;
 import org.jcryptool.visual.sig.ui.wizards.ShowSig;
 import org.jcryptool.visual.sig.ui.wizards.SignatureWizard;
-import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.jcryptool.crypto.keystore.backend.KeyStoreAlias;
-import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.MenuItem;
 
 /**
  * This class contains all the code required for the design and functionality of the main view.

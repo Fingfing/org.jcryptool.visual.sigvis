@@ -1,33 +1,26 @@
 package org.jcryptool.visual.sig.ui.wizards;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintStream;
-import java.io.PrintWriter;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.MessageBox;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.Label;
-import org.jcryptool.core.logging.utils.LogUtil;
+import org.eclipse.swt.widgets.TableItem;
 
 public class ShowSig extends Shell {
 	private Label txtT;
@@ -51,9 +44,9 @@ public class ShowSig extends Shell {
 	private Label txtSigNum;
 
 	private int sigLen = org.jcryptool.visual.sig.algorithm.Input.signature.length;
-	private String sigStrLen = Integer.toString(sigLen); //Bytes!!!!
+	//private String sigStrLen = Integer.toString(sigLen); //Bytes!!!!
 	private int mesLen = org.jcryptool.visual.sig.algorithm.Input.data.length;
-	private String mesStrLen = Integer.toString(mesLen); //Bytes!!!!
+	//private String mesStrLen = Integer.toString(mesLen); //Bytes!!!!
 	private Label lblNewLabel;
 	private String userName;
 	
@@ -478,8 +471,7 @@ public class ShowSig extends Shell {
 //	}
 	
 	private void openHexEditor() {
-		//TODO
-		String str = org.jcryptool.visual.sig.algorithm.Input.signatureHex;
 		
+		//String str = org.jcryptool.visual.sig.algorithm.Input.signatureHex;	
 	}
 }
