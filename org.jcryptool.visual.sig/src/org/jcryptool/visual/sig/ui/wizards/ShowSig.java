@@ -347,7 +347,7 @@ public class ShowSig extends Shell {
 					        output = new BufferedOutputStream(new FileOutputStream(savePath));
 					        output.write(sLen);
 					        output.write(org.jcryptool.visual.sig.algorithm.Input.signature);
-					        output.write(org.jcryptool.visual.sig.algorithm.Input.data.toString().getBytes());
+					        output.write(org.jcryptool.visual.sig.algorithm.Input.data);
 					      }//end try
 					      finally {
 					          output.close();
