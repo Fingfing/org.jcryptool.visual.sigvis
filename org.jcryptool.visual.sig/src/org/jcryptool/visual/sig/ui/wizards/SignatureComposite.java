@@ -1,6 +1,5 @@
 package org.jcryptool.visual.sig.ui.wizards;
 
-import java.security.KeyStoreException;
 import java.util.Enumeration;
 import java.util.HashMap;
 
@@ -12,16 +11,14 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
-import org.jcryptool.core.logging.utils.LogUtil;
-import org.jcryptool.crypto.keystore.KeyStorePlugin;
 import org.jcryptool.crypto.keystore.backend.KeyStoreAlias;
 import org.jcryptool.crypto.keystore.backend.KeyStoreManager;
+
 import de.flexiprovider.core.dsa.DSAPrivateKey;
 import de.flexiprovider.core.rsa.RSAPrivateCrtKey;
 
@@ -254,7 +251,9 @@ public class SignatureComposite extends Composite implements SelectionListener{
 				keystoreitems.clear();
 				combo.removeAll();
 				lblSelectAKey.setText(Messages.SignatureWizard_labelKey);
-				initializeKeySelection(1);
+				if (org.jcryptool.visual.sig.algorithm.Input.privateKey == null) {
+					initializeKeySelection(1);
+				}
 			} else {
 				if (rdo3.getSelection()) {
 					txtDescription.setText(Messages.SignatureWizard_ECDSA_description);
