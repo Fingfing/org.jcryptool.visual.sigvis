@@ -206,18 +206,19 @@ public class ShowSig extends Shell {
 		tblclmnAscii_1.setWidth(150);
 		tblclmnAscii_1.setText(Messages.ShowSig_tblAscii);  
 	    
-		int len2 = org.jcryptool.visual.sig.algorithm.Input.dataHex.length();
+		int len2 = org.jcryptool.visual.sig.algorithm.Input.data.length;
 		String asciistr2 = convertHexToString(org.jcryptool.visual.sig.algorithm.Input.dataHex);
 
-		// for (int i2 = 0; i2 < (Math.ceil((double)len2/(stepSize*2))) ; i2++) { // to show the hole message
+		// for (int i2 = 0; i2 < (Math.ceil((double)len2/(stepSize*2))) ; i2++) { // to show the whole message
 		// shows only 6 rows - optimize performance
 		for (int i2 = 0; i2 < 6 ; i2++) {
+			//Create one item for each row
 	        TableItem item = new TableItem(table_1, SWT.NONE);
 	        
-	        // column 1 - address
-	        item.setText(0, getAddress(i2, stepSize));
+	        // column 1 - address        
+	        item.setText(0, getAddress(i2, stepSize));//Column, string
 	        
-	        // column 2        
+	        // column 2 -        
 	        int start2 = i2 * (stepSize*2);
 	        int end2 = i2 * (stepSize*2) + (stepSize*2);
 	        end2 = end2 >= len2 ? len2 : end2;
@@ -230,14 +231,13 @@ public class ShowSig extends Shell {
 	        }
 	        item.setText(1, bufferD1.toString());
 
-	        // column 3 
+	        // column 3 - ascii 
 	        StringBuffer bufferD2 = new StringBuffer();
 	        bufferD2.append(asciistr2, start2/2, end2/2);
 	        item.setText(2, bufferD2.toString());
 
 	      }
 	    
-		
 	    // text field to show signature as hex, octal or decimal
 		txtSigNum = new Label(composite, SWT.BORDER | SWT.WRAP);
 		txtSigNum.setBounds(0, 98, 484, 151);
