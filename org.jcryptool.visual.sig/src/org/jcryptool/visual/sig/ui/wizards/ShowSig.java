@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -342,23 +343,25 @@ public class ShowSig extends Shell {
 				//Write the file
 			    if (savePath != null) {
 					try {
-					      OutputStream output = null;
-					      try {
-					        output = new BufferedOutputStream(new FileOutputStream(savePath));
-					        output.write(sLen);
+						OutputStream output = null;
+					    try {
+					    	ByteBuffer b = ByteBuffer.allocate(4);
+					    	b.putInt(sLen);
+					    	output = new BufferedOutputStream(new FileOutputStream(savePath));
+					        output.write(b.array());
 					        output.write(org.jcryptool.visual.sig.algorithm.Input.signature);
 					        output.write(org.jcryptool.visual.sig.algorithm.Input.data);
-					      }//end try
-					      finally {
-					          output.close();
-					        }//end finally
 					    }//end try
-					    catch(FileNotFoundException ex){
-					    	//LogUtil.logError(SigPlugin.PLUGIN_ID, ex);
-					    }//end catch
-					    catch(IOException ex){
-					    	//LogUtil.logError(SigPlugin.PLUGIN_ID, ex);
-					    }//end catch
+					    finally {
+					    	output.close();
+					    }//end finally
+				    }//end try
+				    catch(FileNotFoundException ex){
+				    	//LogUtil.logError(SigPlugin.PLUGIN_ID, ex);
+				    }//end catch
+				    catch(IOException ex){
+				    	//LogUtil.logError(SigPlugin.PLUGIN_ID, ex);
+				    }//end catch
 					MessageBox messageBox = new MessageBox(new Shell(Display.getCurrent()), SWT.ICON_INFORMATION | SWT.OK);
 	                messageBox.setText(Messages.ShowSig_MessageBoxTitle); 
 	                messageBox.setMessage(Messages.ShowSig_MessageBoxText);
