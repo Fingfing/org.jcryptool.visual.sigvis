@@ -86,6 +86,7 @@ public class HashComposite extends Composite implements SelectionListener {
 	    rdo1.setText("MD5 (128)");
 	    
 	    rdo2 = new Button(grpHashes, SWT.RADIO);
+	    //rdo2.setSelection(true);
 	    rdo2.setBounds(10, 43, 91, 18);
 	    rdo2.setText("SHA-1 (160)");
 	    
@@ -130,7 +131,7 @@ public class HashComposite extends Composite implements SelectionListener {
 		    case 2: rdo3.setSelection(true); break;
 		    case 3: rdo4.setSelection(true); break;
 		    case 4: rdo5.setSelection(true); break;
-		    default: rdo1.setSelection(true); break;
+		    default: rdo2.setSelection(true); break;
 	    }
 	    //Fire an event to show the correct text. It doesn't matter which radio button triggers the event
 	    //because it is checked in the event handler
